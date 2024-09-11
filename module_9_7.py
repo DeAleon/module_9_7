@@ -1,7 +1,10 @@
 def is_prime(func):
     def wrapper(*args, **kwargs):
         number = func(*args, **kwargs)
-        for i in range(2, number):
+        if number <= 1:
+            print(f'Число {number} не является ни простым, ни составным.')
+            return number
+        for i in range(1, number):
             if number % i == 0 and number != i:
                 print('Составное')
                 return number
@@ -18,5 +21,5 @@ def sum_three(*number):
     return sum_number
 
 
-result = sum_three(2, 3, 6)
+result = sum_three(2, -4, -2)
 print(result)
